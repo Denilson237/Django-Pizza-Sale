@@ -1,0 +1,37 @@
+{% load static %}
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Menu des pizzas</title>
+    <link rel="stylesheet" href="{% static 'pizza/styles.css' %}">
+</head>
+<body>
+    <div class="menu_list">
+    <a href="{% url 'main' %}"><img id="small_logo" src="{% static 'pizza/images/small_logo.png' %}"></a>
+    <div class = "menu_title">
+        <h1>les pizzas</h1>
+    </div>
+
+    <div>
+        {% for menu in pizzas %}
+            <div class=" menu_list_item">
+                <span class="menu_list_title">{{menu.nom}} </span>
+                <span class="menu_list_prix">{{menu.prix | floatformat:2}}$ </span>
+                <span class="menu_list_ingredients">{{menu.ingredients}} </span>
+                {% if menu.vegetarienne %}
+                    <span class="menu_list_badge">VEGETARIENNE</span>
+                {% endif %}
+            </div>
+
+        {% endfor %}
+    </div>
+    </div>
+    <footer>
+        <h2>CONTACTEZ-NOUS</h2>
+        <address id="fin">Restaurant - Pizzéria, Le Bateau : 103, avenue de la mer - 85690 Notre Dame des Monts </address><br>
+        <address class="tel">Tèl : 692 73 20 34 / 621 25 71 46</address>
+        <div class="copy">copyright 2023. Tous droits reserses. NGOUMLA DENILSON &copy; </div>
+    </footer>
+</body>
+</html>
